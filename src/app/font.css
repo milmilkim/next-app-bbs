@@ -1,0 +1,92 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * roc-grotesk-wide:
+ *   - http://typekit.com/eulas/00000000000000007735b7c2
+ *   - http://typekit.com/eulas/00000000000000007735b7c6
+ *   - http://typekit.com/eulas/00000000000000007735b7cd
+ *   - http://typekit.com/eulas/00000000000000007735b7d6
+ *   - http://typekit.com/eulas/00000000000000007735b7e3
+ *
+ * © 2009-2023 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2023-08-16 15:58:40 UTC"}*/
+
+@import url('https://p.typekit.net/p.css?s=1&k=xde0yao&ht=tk&f=41113.41114.41116.41118.41121&a=11495037&app=typekit&e=css');
+
+@font-face {
+  font-family: 'roc-grotesk-wide';
+  src: url('https://use.typekit.net/af/bcc24a/00000000000000007735b7c2/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/bcc24a/00000000000000007735b7c2/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/bcc24a/00000000000000007735b7c2/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'roc-grotesk-wide';
+  src: url('https://use.typekit.net/af/14b999/00000000000000007735b7c6/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/14b999/00000000000000007735b7c6/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/14b999/00000000000000007735b7c6/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'roc-grotesk-wide';
+  src: url('https://use.typekit.net/af/c9606e/00000000000000007735b7cd/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/c9606e/00000000000000007735b7cd/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/c9606e/00000000000000007735b7cd/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'roc-grotesk-wide';
+  src: url('https://use.typekit.net/af/662642/00000000000000007735b7d6/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/662642/00000000000000007735b7d6/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/662642/00000000000000007735b7d6/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'roc-grotesk-wide';
+  src: url('https://use.typekit.net/af/f319d5/00000000000000007735b7e3/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/f319d5/00000000000000007735b7e3/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/f319d5/00000000000000007735b7e3/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 100;
+  font-stretch: normal;
+}
+
+.tk-roc-grotesk-wide {
+  font-family: 'roc-grotesk-wide', sans-serif;
+}
