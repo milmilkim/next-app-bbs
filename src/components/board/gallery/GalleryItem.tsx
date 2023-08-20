@@ -24,6 +24,12 @@ const GalleryItem: React.FC<GalleryItemProps> = (props) => {
         initial={{
           filter: 'blur(5px)',
         }}
+        whileTap={{
+          scale: 0.8
+        }}
+        whileHover={{
+          scale: 1.05
+        }}
         animate={{
           filter: 'blur(0)',
         }}>

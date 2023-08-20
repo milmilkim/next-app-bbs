@@ -4,14 +4,10 @@ import { notoSansBlack } from '@/utils/googleFonts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-
-import Chiikawa from '@/assets/images/character/chiikawa.png';
-import Hachiware from '@/assets/images/character/hachiware.png';
-import Usagi from '@/assets/images/character/Usagi.png';
+import Anoko from '@/assets/images/character/anoko.png';
 
 const MainLogo = () => {
   const texts = ['Welcome', 'To', 'My'];
-  const characters = [Hachiware, Chiikawa, Usagi];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const changeText = () => {
@@ -56,16 +52,8 @@ const MainLogo = () => {
         </h1>
       </div>
 
-      <div className='m-auto  absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 grid grid-cols-3 gap-4 w-52'>
-        {characters.map((char, index) => (
-          <div className='flex flex-shrink-0' key={index}>
-            <img
-              src={char.src}
-              className=' w-full h-auto'
-              alt='캐릭터 이미지'
-            />
-          </div>
-        ))}
+      <div className='m-auto  absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 w-64 h-64'>
+        <Image src={Anoko} alt='아노코와 친구들' fill={true} className='object-cover' placeholder='empty' />
       </div>
     </>
   );
