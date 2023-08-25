@@ -37,4 +37,3 @@ next-env.d.ts
 
 # firebase
 # firebase.config.js
-service_account.json

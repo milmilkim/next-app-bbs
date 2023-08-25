@@ -70,8 +70,6 @@ const ReviewPage = () => {
         content,
       } = e.currentTarget;
 
-      console.log(formTitle);
-
       try {
         setIsShowSpinner(true);
         await writeData('reviews', {
@@ -89,7 +87,7 @@ const ReviewPage = () => {
         setIsShowSpinner(false);
       }
     },
-    []
+    [setIsShowSpinner]
   );
 
   return (

@@ -1,12 +1,8 @@
 'use client';
 
-import { notoSansBold } from '@/utils/googleFonts';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Thumbnail from './Thumbnail';
-import styled from 'styled-components';
-import Bang from '@/assets/images/bang.png';
-import Image from 'next/image';
 interface GalleryItemProps {
   imgUrl: string;
   title: string;

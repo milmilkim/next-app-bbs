@@ -2,25 +2,24 @@
 
 import { notoSansBold, notoSansRegular } from '@/utils/googleFonts';
 import styled from 'styled-components';
-import Footer from '@/assets/images/footer.svg';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next-nprogress-bar';
 import { SetStateAction } from 'jotai';
 
-export default function ({
+const Finished = ({
   setIsShowForm,
 }: {
   setIsShowForm: React.Dispatch<SetStateAction<boolean>>;
-}) {
+}) => {
   const router = useRouter();
 
   useEffect(() => {
     router.prefetch('/category');
-  }, []);
+  }, [router]);
 
   const goCategory = useCallback(() => {
     router.push('/category');
-  }, []);
+  }, [router]);
 
   return (
     <StyledBackground
@@ -41,12 +40,10 @@ export default function ({
 
       <div
         className='w-full absolute bottom-0 flex justify-center'
-        style={{ borderTop: '5px solid #000', backgroundColor: '#ff0' }}>
-        <Footer />
-      </div>
+        style={{ borderTop: '5px solid #000', backgroundColor: '#ff0' }}></div>
     </StyledBackground>
   );
-}
+};
 
 const StyledBackground = styled.div`
   position: relative;
@@ -66,3 +63,5 @@ const StyledBackground = styled.div`
     z-index: -1;
   }
 `;
+
+export default Finished;

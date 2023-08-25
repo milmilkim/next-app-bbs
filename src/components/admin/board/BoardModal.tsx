@@ -34,7 +34,7 @@ const BoardModal: React.FC<BoardModalProps> = ({
       const urls = tmp.filter((url) => url !== category?.url);
       return urls.includes(value);
     },
-    [categoryList]
+    [categoryList, category?.url]
   );
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const BoardModal: React.FC<BoardModalProps> = ({
       isPublic: category?.isPublic,
       type: category?.type,
     });
-  }, [category]);
+  }, [category, form]);
 
   const handleCancel = () => {
     setIsOpen(false);

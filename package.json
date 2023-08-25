@@ -55,6 +55,8 @@
     "@types/nodemailer": "^6.4.9",
     "@types/react-datepicker": "^4.15.0",
     "@types/react-draft-wysiwyg": "^1.13.4",
-    "encoding": "^0.1.13"
+    "encoding": "^0.1.13",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.19"
   }
 }

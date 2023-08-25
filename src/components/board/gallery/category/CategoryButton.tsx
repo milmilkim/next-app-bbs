@@ -1,4 +1,4 @@
-export default function ({ color }: { color: string }) {
+const Button = ({ color }: { color: string }) => {
   return (
     <div>
       <svg
@@ -42,4 +42,6 @@ export default function ({ color }: { color: string }) {
       </svg>
     </div>
   );
-}
+};
+
+export default Button;

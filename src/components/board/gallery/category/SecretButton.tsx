@@ -1,4 +1,4 @@
-export default function () {
+const Button = () => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -44,3 +44,5 @@ export default function () {
     </svg>
   );
 }
+
+export default Button;

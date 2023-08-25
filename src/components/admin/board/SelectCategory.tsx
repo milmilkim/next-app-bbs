@@ -13,7 +13,7 @@ interface Props {
 const SelectCategory: React.FC<Props> = ({ setCategoryId, data }) => {
   const changeCategory = useCallback((val: string) => {
     setCategoryId(val);
-  }, []);
+  }, [setCategoryId]);
 
   const options = useMemo(() => {
     return data.map((v) => ({

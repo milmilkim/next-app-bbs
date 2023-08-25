@@ -1,20 +1,14 @@
 'use client';
 
 import GalleryList from './gallery/GalleryList';
-import Background from '@/assets/images/white.svg';
 import { motion } from 'framer-motion';
-import Footer from '@/assets/images/footer.svg';
 import TopScroll from '@/components/common/TopScroll';
-import CategoryButton from './gallery/category/CategoryButton';
-import Link from 'next/link';
-import SecretButton from './gallery/category/SecretButton';
 import { useCallback, useEffect, useState } from 'react';
-import { QueryConstraint, orderBy, startAt, where } from 'firebase/firestore';
+import { QueryConstraint, where } from 'firebase/firestore';
 import { getArray, getDataList } from '@/utils/firestore';
 import { Post } from '@/types/board';
 import { SetStateAction } from 'jotai';
 import { notoSansRegular } from '@/utils/googleFonts';
-import ReviewButton from '../common/ReviewButton';
 
 function shuffleArray<T>(array: T[]): T[] {
   const shuffledArray = [...array];
@@ -43,7 +37,7 @@ const GalleryBoard = ({
 
   /** 조회 */
 
-  const fetchList = async (
+  const fetchList = useCallback(async (
     setter: React.Dispatch<SetStateAction<Required<Post>[]>>
   ) => {
     let query: QueryConstraint[];
@@ -57,11 +51,11 @@ const GalleryBoard = ({
 
     const list = getArray<Required<Post>>(res);
     setter(shuffleArray(list));
-  };
+  }, [id])
 
   useEffect(() => {
     fetchList(setInitialedDataList);
-  }, []);
+  }, [fetchList]);
 
   useEffect(() => {
     setDataList(initialedDataList);

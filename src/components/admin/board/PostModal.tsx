@@ -48,13 +48,13 @@ const PostModal: React.FC<PostModalProps> = ({
   const getPost = useCallback(async () => {
     const data = await firestore.getData('posts', currentId);
     setPost(data);
-  }, [currentId]);
+  }, [currentId, firestore]);
 
   useEffect(() => {
     if (currentId) {
       getPost();
     }
-  }, [currentId]);
+  }, [currentId, getPost]);
 
   useEffect(() => {
     if (post) {

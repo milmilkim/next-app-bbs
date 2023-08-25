@@ -14,7 +14,7 @@ import { useParams } from 'next/navigation';
 import Heart from './Heart';
 import ReviewButton from '@/components/common/ReviewButton';
 import TopScroll from '@/components/common/TopScroll';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import config from '@/app/config';
 import { getData } from '@/utils/firestore';
 interface PostProps {
@@ -28,7 +28,7 @@ const PostItem: React.FC<PostProps> = ({ post, id, base64 }) => {
   const [count, setcount] = useState(post.heart || 0);
   const [isAdded, setIsAdded] = useState(false);
 
-  const checkHeart = () => {
+  const checkHeart = useCallback(() => {
     const string = window.localStorage.getItem('heart') || '';
     if (!string) return;
 
@@ -39,15 +39,15 @@ const PostItem: React.FC<PostProps> = ({ post, id, base64 }) => {
     } else {
       setIsAdded(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     checkHeart();
-  }, [id, count]);
+  }, [id, count, checkHeart]);
 
   return (
     <motion.article
-      className='max-w-3xl m-auto min-h-screen'
+      className='w-screen m-auto min-h-screen bg-secondary overflow-auto'
       initial={{
         opacity: 0,
         filter: 'blur(5px)',
@@ -56,13 +56,13 @@ const PostItem: React.FC<PostProps> = ({ post, id, base64 }) => {
         opacity: 1,
         filter: 'blur(0)',
       }}>
-      <div className='w-full max-w-sm  m-auto '>
-        <div className='w-full border-b-4 border-solid border-black relative placeholder:h-full aspect-square relative'>
+      <div className=' max-w-xs m-auto mt-7'>
+        <div className='w-full border-4 border-solid border-black placeholder:h-full aspect-square relative'>
           {post.thumbnailUrl ? (
             <Image
               priority
               fill={true}
-              className='object-cover'
+              className='object-cover bg-white'
               src={post.thumbnailUrl}
               alt={post.title + '관련 이미지'}
               placeholder='blur'
@@ -75,7 +75,7 @@ const PostItem: React.FC<PostProps> = ({ post, id, base64 }) => {
 
         <article
           className={`w-full flex flex-col ${notoSansRegular.className}`}>
-          <div className=' px-10 mt-20 h-auto text-right'>
+          <div className='px-10 mt-20 h-auto'>
             <h1 className=' text-sm font-bold'>{post.title}</h1>
             <h2 className=' text-sm mt-8'>{post.writer}</h2>
           </div>

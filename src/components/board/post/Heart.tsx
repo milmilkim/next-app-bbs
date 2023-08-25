@@ -11,14 +11,14 @@ interface Props {
   setCount: React.Dispatch<SetStateAction<number>>;
   id: string;
 }
-export default function ({ count, isAdded, setCount, id }: Props) {
+const Heart = ({ count, isAdded, setCount, id }: Props) => {
   const clickHeart = () => {
     if (!isAdded) {
       setCount((count) => count + 1);
 
       const string = window.localStorage.getItem('heart') || '';
-      let ids = []
-      if(string) {
+      let ids = [];
+      if (string) {
         ids = JSON.parse(string)?.ids;
       }
 
@@ -137,4 +137,6 @@ export default function ({ count, isAdded, setCount, id }: Props) {
       </svg>
     </motion.div>
   );
-}
+};
+
+export default Heart;

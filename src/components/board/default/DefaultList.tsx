@@ -4,7 +4,7 @@ import { Post } from '@/types/board';
 import { getArray, getDataList } from '@/utils/firestore';
 import { limit, orderBy, startAfter, where } from 'firebase/firestore';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PostCard from './PostCard';
 
 interface GalleryListProps {
@@ -24,7 +24,7 @@ const GalleryList: React.FC<GalleryListProps> = ({
   const [isAllDataLoaded, setIsAllDataLoaded] = useState(false);
   const [lastDocument, setLastDocument] = useState<Required<Post>>();
 
-  const fetchNextList = async () => {
+  const fetchNextList = useCallback(async () => {
     const res = await getDataList(
       'posts',
       where('category', '==', categoryId),
@@ -33,7 +33,7 @@ const GalleryList: React.FC<GalleryListProps> = ({
       limit(10)
     );
     return res;
-  };
+  }, [categoryId, lastDocument?.createdAt]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,7 +67,7 @@ const GalleryList: React.FC<GalleryListProps> = ({
     return () => {
       if (currentLoadingRef) observer.unobserve(currentLoadingRef);
     };
-  }, [isLoading, isAllDataLoaded, dataList, lastDocument]);
+  }, [isLoading, isAllDataLoaded, dataList, lastDocument, fetchNextList]);
 
   return (
     <>
