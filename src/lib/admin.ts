@@ -1,6 +1,6 @@
 import config from '../../firebase.config';
 import admin from 'firebase-admin';
-import serviceAccount from '../../service_account.json';
+import serviceAccount from '../../service_account';
 import { ServiceAccount } from 'firebase-admin';
 import { FirebaseError } from 'firebase/app';
 
