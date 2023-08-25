@@ -15,10 +15,10 @@ const Page = () => {
       orderBy('createdAt', 'desc')
     );
     setData(res || []);
-  }, []);
+  }, [firestore]);
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
   return (
     <div className='m-auto flex-col w-full items-center justify-center'>
       {data.map((reivew) => (

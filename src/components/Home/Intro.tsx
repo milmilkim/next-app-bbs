@@ -1,8 +1,7 @@
 'use client';
 
-import { notoSansBlack } from '@/utils/googleFonts';
-import { motion, AnimatePresence } from 'framer-motion';
-import { memo, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { memo, useState } from 'react';
 import Image from 'next/image';
 import Anoko from '@/assets/images/character/anoko.png';
 
@@ -37,6 +36,8 @@ const Logo = memo(() => {
     </div>
   );
 });
+
+Logo.displayName = 'Logo';
 
 const Intro = () => {
   return (

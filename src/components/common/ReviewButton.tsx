@@ -4,17 +4,17 @@ import { motion } from 'framer-motion';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function ({ color }: { color?: string }) {
+const Button = ({ color }: { color?: string }) => {
   const router = useRouter();
 
   const goReview = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     router.push('/review');
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     router.prefetch('/review');
-  }, []);
+  }, [router]);
 
   return (
     <motion.div
@@ -92,3 +92,6 @@ export default function ({ color }: { color?: string }) {
     </motion.div>
   );
 }
+
+
+export default Button;

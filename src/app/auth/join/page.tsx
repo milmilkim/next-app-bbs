@@ -39,7 +39,7 @@ const Join = () => {
     if (!key) {
       router.push('/');
     }
-  }, []);
+  }, [key, router]);
 
   const setIsShowSpinner = useSetAtom(isShowSpinnerAtom);
 

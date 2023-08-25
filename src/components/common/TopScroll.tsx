@@ -3,11 +3,9 @@
 import { motion } from 'framer-motion';
 import { useCallback } from 'react';
 
-interface Props {
-  color?: string;
-}
 
-export default function ({ color }: Props) {
+
+const Button = () => {
   const scrollToTop = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,3 +18,5 @@ export default function ({ color }: Props) {
     </div>
   );
 }
+
+export default Button;

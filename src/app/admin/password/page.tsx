@@ -22,7 +22,7 @@ const Page = () => {
       password,
       passwordUrl: url
     })
-  }, [password, url])
+  }, [firestore, password, url])
 
   useEffect(() => {
     (async () => {
@@ -36,7 +36,7 @@ const Page = () => {
         setUrl(res.passwordUrl);
       }
     })();
-  }, []);
+  }, [firestore]);
 
   return (
     <div>

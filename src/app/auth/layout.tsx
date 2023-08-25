@@ -29,7 +29,7 @@ const StyledBg = styled.div`
   }
 `;
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const isShowSpinner = useAtomValue(isShowSpinnerAtom);
 
   return (
@@ -53,4 +53,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;

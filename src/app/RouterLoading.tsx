@@ -2,9 +2,7 @@
 
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 
-
-
-export default function () {
+const RouterLoading = () => {
   return (
     <ProgressBar
       height='5px'
@@ -13,4 +11,8 @@ export default function () {
       shallowRouting
     />
   );
-}
+};
+
+RouterLoading.displayName = 'RouterLoading';
+
+export default RouterLoading;

@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function ({ color }: { color?: string }) {
+const Button = () => {
   const router = useRouter();
 
   const goBack = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     router.back();
-  }, []);
+  }, [router]);
 
 
   return (
@@ -84,3 +84,5 @@ export default function ({ color }: { color?: string }) {
     </motion.div>
   );
 }
+
+export default Button;

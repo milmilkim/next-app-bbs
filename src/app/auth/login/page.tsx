@@ -90,8 +90,8 @@ const NoAdmin = () => {
               않습니다.
             </div>
             <ul className='list-disc ml-10'>
-              {checkNull().map((key) => (
-                <li>{key} ❌</li>
+              {checkNull().map((key, index) => (
+                <li key={index}>{key} ❌</li>
               ))}
             </ul>
           </>

@@ -13,7 +13,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Button, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Board, BoardType } from '@/types/board';
 import useMessage from '@/hooks/admin/useMessage';
 import dynamic from 'next/dynamic';
@@ -160,10 +160,10 @@ const App: React.FC = () => {
     getDataSource();
   };
 
-  const getDataSource = async () => {
+  const getDataSource = useCallback(async () => {
     const res = (await firestore.getDataList<Board[]>('boards')) || [];
     setCategoryList(res.sort((a,b) => a.order - b.order));
-  };
+  }, [firestore])
 
   const saveOrder = async () => {
     const list = categoryList.map((category, index) => ({
@@ -178,7 +178,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     getDataSource();
-  }, []);
+  }, [getDataSource]);
 
 
   return (

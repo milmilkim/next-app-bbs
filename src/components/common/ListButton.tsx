@@ -4,23 +4,23 @@ import { motion } from 'framer-motion';
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function ({
+const Button =  ({
   color,
   category,
 }: {
   color?: string;
   category?: string;
-}) {
+}) => {
   const router = useRouter();
 
   const goCategory = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     router.push('/category/' + (category || ''));
-  }, []);
+  }, [category, router]);
 
   useEffect(() => {
     router.prefetch('/category/' + (category || '') );
-  }, [category]);
+  }, [category, router]);
 
   return (
     <div className='w-full flex'>
@@ -109,3 +109,5 @@ export default function ({
     </div>
   );
 }
+
+export default Button;

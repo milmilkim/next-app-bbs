@@ -129,7 +129,7 @@ const Editor: React.FC<EditorProps> = ({ value, setValue }) => {
         setIsLoading(false);
       }
     });
-  }, []);
+  }, [message, setIsLoading]);
 
   return (
     <StyledWrapper>

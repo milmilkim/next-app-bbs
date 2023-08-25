@@ -4,7 +4,7 @@ import 'src/app/globals.css';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { isShowSpinnerAtom } from '@/store/LayoutStore';
 import { useAtomValue, useSetAtom } from 'jotai';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import MainMenu from './MainMenu';
 import { categoryAtom } from '@/atoms/categoryAtom';
 import { where } from 'firebase/firestore';
@@ -14,19 +14,21 @@ import { Board } from '@/types/board';
 const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   const isShowSpinner = useAtomValue(isShowSpinnerAtom);
 
-
   const setCategory = useSetAtom(categoryAtom);
 
-  const getCategoryList = async () => {
-    const res = await firestore.getDataList('boards', where('isPublic', '==', true));
+  const getCategoryList = useCallback(async () => {
+    const res = await firestore.getDataList(
+      'boards',
+      where('isPublic', '==', true)
+    );
     const menus = firestore.getArray<Board>(res);
-    setCategory(menus.sort((a,b) => a.order - b.order));
-  }
+    setCategory(menus.sort((a, b) => a.order - b.order));
+  }, [setCategory]);
 
   useEffect(() => {
     getCategoryList();
-  }, [])
-  
+  }, [getCategoryList]);
+
   return (
     <div>
       {isShowSpinner ? <LoadingSpinner /> : null}

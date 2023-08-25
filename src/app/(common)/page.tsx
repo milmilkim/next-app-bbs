@@ -1,5 +1,7 @@
 import Intro from '@/components/Home/Intro';
 
-export default function () {
+const Page = () => {
   return <Intro />;
 }
+
+export default Page;

@@ -22,10 +22,13 @@ const Page = () => {
   );
 
   const MoveCategoryModal = useMemo(
-     () =>
-       dynamic(async () => await import('@/components/admin/board/MoveCategoryModal'), {
-        ssr: false,
-      }),
+    () =>
+      dynamic(
+        async () => await import('@/components/admin/board/MoveCategoryModal'),
+        {
+          ssr: false,
+        }
+      ),
     []
   );
 
@@ -51,42 +54,39 @@ const Page = () => {
 
   const firestore = useFireStore();
 
-  const getCategoryList = async () => {
+  const getCategoryList = useCallback(async () => {
     const res = await firestore.getDataList('boards', orderBy('order', 'asc'));
-    setCategoryList(res)
-  }
+    setCategoryList(res);
+  }, [firestore]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     let res;
     if (categoryId) {
-
       res = await firestore.getDataList(
         'posts',
         where('category', '==', categoryId || null),
         orderBy('createdAt', 'desc')
       );
-
     } else {
       res = await firestore.getDataList('posts', orderBy('createdAt', 'desc'));
     }
 
     setPostCount(res.length);
     setData(res);
-  };
+  }, [categoryId, firestore])
 
   const [categoryList, setCategoryList] = useState<Board[]>([]);
 
   const [postCount, setPostCount] = useState(0);
- 
 
   useEffect(() => {
     fetchData();
-  }, [categoryId]);
+  }, [categoryId, fetchData]);
 
   useEffect(() => {
     fetchData();
     getCategoryList();
-  }, [])
+  }, [fetchData, getCategoryList]);
 
   const getCategoryName = useCallback(
     (id: string) => {
@@ -116,7 +116,7 @@ const Page = () => {
     } catch (err) {
       console.error(err);
     }
-  }, [selectedRowKeys]);
+  }, [fetchData, firestore, selectedRowKeys]);
 
   const columns: ColumnsType<Required<Post>> = useMemo(
     () => [
@@ -143,7 +143,7 @@ const Page = () => {
         },
       },
     ],
-    [getCategoryName]
+    [getCategoryName, openModal]
   );
 
   return (

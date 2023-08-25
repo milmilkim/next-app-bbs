@@ -7,7 +7,6 @@ import { Input, Switch } from 'antd';
 import { Timestamp } from 'firebase/firestore';
 import useFireStore from '@/hooks/admin/useFireStore';
 import { useRouter } from 'next/navigation';
-import { extractFirstImage } from '@/utils/post';
 import SelectCategory from '@/components/admin/board/SelectCategory';
 import { Board, Post } from '@/types/board';
 import useMessage from '@/hooks/admin/useMessage';
@@ -29,16 +28,14 @@ const Home = () => {
 
   const { writeData, getDataList } = useFireStore();
 
-  const getCategoryList = async () => {
-    const res = await getDataList('boards')
+  const getCategoryList = useCallback(async () => {
+    const res = await getDataList('boards');
     setCategoryList(res);
-
-  }
+  }, [getDataList]);
 
   useEffect(() => {
     getCategoryList();
-  }, [])
-
+  }, [getCategoryList]);
 
   const changeTitle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.currentTarget.value;
@@ -88,7 +85,6 @@ const Home = () => {
   const goBack = () => {
     router.back();
   };
-
 
   return (
     <div>

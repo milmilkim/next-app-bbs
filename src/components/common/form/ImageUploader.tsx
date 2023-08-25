@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
-import type { UploadChangeParam } from 'antd/es/upload';
-import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
+import type { RcFile } from 'antd/es/upload/interface';
 import { uploadImage } from '@/utils/storage';
 import { SetStateAction } from 'jotai';
-
+import Image from 'next/image';
 
 interface Props {
 	imageUrl: string;
@@ -51,7 +50,7 @@ const App: React.FC<Props> = ({imageUrl, setImageUrl}) => {
         showUploadList={false}
         beforeUpload={beforeUpload}>
         {imageUrl ? (
-          <img src={imageUrl} alt='avatar' style={{ width: '100%' }} />
+          <Image src={imageUrl} alt='avatar' style={{ width: '100%' }} width={150} height={150} />
         ) : (
           uploadButton
         )}
