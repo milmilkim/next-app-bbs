@@ -64,7 +64,6 @@ const Row = ({ children, ...props }: RowProps) => {
 };
 
 const App: React.FC = () => {
-  const [dataSource, setDataSource] = useState<Board[]>([]);
   const [categoryList, setCategoryList] = useState<Board[]>([]);
 
   const BoardModal = dynamic(
@@ -86,7 +85,7 @@ const App: React.FC = () => {
   const [category, setCategory] = useState<Board | null>(null);
   const { contextHolder, success, error, warning } = useMessage();
 
-  const firestore = useFireStore();
+  const {getDataList,...firestore} = useFireStore();
 
   const columns: ColumnsType<Board> = [
     {
@@ -161,9 +160,9 @@ const App: React.FC = () => {
   };
 
   const getDataSource = useCallback(async () => {
-    const res = (await firestore.getDataList<Board[]>('boards')) || [];
+    const res = (await getDataList<Board[]>('boards')) || [];
     setCategoryList(res.sort((a,b) => a.order - b.order));
-  }, [firestore])
+  }, [getDataList])
 
   const saveOrder = async () => {
     const list = categoryList.map((category, index) => ({

@@ -52,28 +52,28 @@ const Page = () => {
   };
   const hasSelected = selectedRowKeys.length > 0;
 
-  const firestore = useFireStore();
+  const {getDataList, ...firestore} = useFireStore();
 
   const getCategoryList = useCallback(async () => {
-    const res = await firestore.getDataList('boards', orderBy('order', 'asc'));
+    const res = await getDataList('boards', orderBy('order', 'asc'));
     setCategoryList(res);
-  }, [firestore]);
+  }, [getDataList]);
 
   const fetchData = useCallback(async () => {
     let res;
     if (categoryId) {
-      res = await firestore.getDataList(
+      res = await getDataList(
         'posts',
         where('category', '==', categoryId || null),
         orderBy('createdAt', 'desc')
       );
     } else {
-      res = await firestore.getDataList('posts', orderBy('createdAt', 'desc'));
+      res = await getDataList('posts', orderBy('createdAt', 'desc'));
     }
 
     setPostCount(res.length);
     setData(res);
-  }, [categoryId, firestore])
+  }, [categoryId, getDataList])
 
   const [categoryList, setCategoryList] = useState<Board[]>([]);
 
@@ -81,12 +81,9 @@ const Page = () => {
 
   useEffect(() => {
     fetchData();
-  }, [categoryId, fetchData]);
-
-  useEffect(() => {
-    fetchData();
     getCategoryList();
-  }, [fetchData, getCategoryList]);
+  }, [categoryId, getCategoryList, fetchData]);
+
 
   const getCategoryName = useCallback(
     (id: string) => {

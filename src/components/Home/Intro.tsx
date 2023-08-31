@@ -1,11 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Anoko from '@/assets/images/character/anoko.png';
 
 const Logo = memo(() => {
+  console.log('로고 렌더링..');
+
   const texts = ['Welcome', 'To', 'My'];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -39,7 +41,35 @@ const Logo = memo(() => {
 
 Logo.displayName = 'Logo';
 
+const Picture = memo(() => {
+  console.log('이미지 렌더링');
+  return (
+    <div className='m-auto  absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 w-64 h-64'>
+      <Image
+        src={Anoko}
+        alt='아노코와 친구들'
+        fill={true}
+        className='object-cover'
+        placeholder='empty'
+      />
+    </div>
+  );
+});
+
+Picture.displayName = 'Picture';
+
 const Intro = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCount((count) => ++count);
+    }, 500);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <>
       <div className='w-screen h-screen -z-10 fixed'>
@@ -53,17 +83,10 @@ const Intro = () => {
         </video>
       </div>
 
+      {count}
       <Logo />
 
-      <div className='m-auto  absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 w-64 h-64'>
-        <Image
-          src={Anoko}
-          alt='아노코와 친구들'
-          fill={true}
-          className='object-cover'
-          placeholder='empty'
-        />
-      </div>
+      <Picture />
     </>
   );
 };

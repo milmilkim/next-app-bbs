@@ -16,7 +16,6 @@ const menus = [
   { key: 'admin', url: '/admin', label: '기본 설정' },
   { key: 'post', url: '/admin/board/post', label: '게시글 관리' },
   { key: 'category', url: '/admin/board/category', label: '카테고리 관리' },
-  { key: 'review', url: '/admin/review', label: '메세지 조회' },
   { key: 'secret', url: '/admin/password', label: '비밀번호 설정' },
 ];
 

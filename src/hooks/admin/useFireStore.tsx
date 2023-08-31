@@ -3,21 +3,25 @@ import { useSetAtom } from 'jotai';
 import { isShowSpinnerAtom } from '@/store/LayoutStore';
 import { QueryConstraint } from 'firebase/firestore';
 import { getArray } from '@/utils/firestore';
+import { useCallback } from 'react';
 
 const useFireStore = () => {
   const isShowSpinner = useSetAtom(isShowSpinnerAtom);
 
-  const wrapper = async <T = any,>(callback: Function) => {
-    isShowSpinner(true);
-    try {
-      const res = await callback();
-      return res as T;
-    } catch (err) {
-      console.error(err);
-    } finally {
-      isShowSpinner(false);
-    }
-  };
+  const wrapper = useCallback(
+    async <T = any,>(callback: Function) => {
+      isShowSpinner(true);
+      try {
+        const res = await callback();
+        return res as T;
+      } catch (err) {
+        console.error(err);
+      } finally {
+        isShowSpinner(false);
+      }
+    },
+    [isShowSpinner]
+  );
 
   const writeData = async <T extends { [x: string]: any }>(
     collctionName: string,
@@ -29,20 +33,23 @@ const useFireStore = () => {
     });
   };
 
-  const getDataList = async <T = any,>(
-    collectionName: string,
-    ...queryConstraints: QueryConstraint[]
-  ) => {
-    return wrapper<T>(async () => {
-      const res = await firestore.getDataList(
-        collectionName,
-        ...queryConstraints
-      );
-      return getArray<T>(res);
-    });
-  };
+  const getDataList = useCallback(
+    async <T = any,>(
+      collectionName: string,
+      ...queryConstraints: QueryConstraint[]
+    ) => {
+      return wrapper<T>(async () => {
+        const res = await firestore.getDataList(
+          collectionName,
+          ...queryConstraints
+        );
+        return getArray<T>(res);
+      });
+    },
+    [wrapper]
+  );
 
-  const getData = async <T = any> (collectionName: string, id: string) => {
+  const getData = async <T = any,>(collectionName: string, id: string) => {
     return wrapper<T>(async () => {
       const data = await firestore.getData<T>(collectionName, id);
       return data;
